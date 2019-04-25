@@ -5,6 +5,11 @@ PureMVC is a lightweight framework for creating applications based upon the clas
 * [API Docs]()
 * [Unit Tests](http://puremvc.org/pages/images/screenshots/PureMVC-Shot-Go-Standard-UnitTests.png)
 
+## Installation
+```
+go get github.com/puremvc/puremvc-go-standard-framework
+```
+
 ## Platforms / Technologies
 * [FreeBSD](https://en.wikipedia.org/wiki/FreeBSD)
 * [Linux](https://en.wikipedia.org/wiki/Linux)
