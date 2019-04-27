@@ -12,7 +12,7 @@ import "github.com/puremvc/puremvc-go-standard-framework/src/patterns/mediator"
 
 const ViewTestMediator_NAME = "ViewTestMediator"
 
-/**
+/*
 A Mediator class used by ViewTest.
 */
 type ViewTestMediator struct {

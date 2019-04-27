@@ -10,9 +10,9 @@ package view
 
 import "github.com/puremvc/puremvc-go-standard-framework/src/interfaces"
 
-/**
-  A test variable that proves the viewTestMethod was
-  invoked by the View.
+/*
+A test variable that proves the viewTestMethod was
+invoked by the View.
 */
 var ViewTestVar int
 

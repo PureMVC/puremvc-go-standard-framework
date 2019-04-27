@@ -16,11 +16,11 @@ import (
 	"testing"
 )
 
-/**
+/*
 Test the PureMVC View class.
 */
 
-/**
+/*
   Tests the View Singleton Factory Method
 */
 func TestGetInstance(t *testing.T) {
@@ -33,7 +33,7 @@ func TestGetInstance(t *testing.T) {
 	}
 }
 
-/**
+/*
   Tests registration and notification of Observers.
 
   An Observer is created to callback the viewTestMethod of
@@ -78,7 +78,7 @@ func TestRegisterAndNotifyObserver(t *testing.T) {
 	}
 }
 
-/**
+/*
   Tests registering and retrieving a mediator with
   the View.
 */
@@ -101,7 +101,7 @@ func TestRegisterAndRetrieveMediator(t *testing.T) {
 	view.RemoveMediator(ViewTestMediator_NAME)
 }
 
-/**
+/*
   Tests the hasMediator Method
 */
 func TestHasMediator(t *testing.T) {
@@ -127,7 +127,7 @@ func TestHasMediator(t *testing.T) {
 	}
 }
 
-/**
+/*
   Tests registering and removing a mediator
 */
 func TestRegisterAndRemoveMediator(t *testing.T) {
@@ -152,7 +152,7 @@ func TestRegisterAndRemoveMediator(t *testing.T) {
 	}
 }
 
-/**
+/*
   Tests that the View callse the onRegister and onRemove methods
 */
 func TestOnRegisterAndOnRemove(t *testing.T) {
@@ -178,7 +178,7 @@ func TestOnRegisterAndOnRemove(t *testing.T) {
 	}
 }
 
-/**
+/*
   Tests successive regster and remove of same mediator.
 */
 func TestSuccessiveRegisterAndRemoveMediator(t *testing.T) {
@@ -224,7 +224,7 @@ func TestSuccessiveRegisterAndRemoveMediator(t *testing.T) {
 	}
 }
 
-/**
+/*
   Tests registering a Mediator for 2 different notifications, removing the
   Mediator from the View, and seeing that neither notification causes the
   Mediator to be notified.
@@ -272,7 +272,7 @@ func TestRemoveMediatorAndSubsequentNotify(t *testing.T) {
 	}
 }
 
-/**
+/*
   Tests registering one of two registered Mediators and seeing
   that the remaining one still responds.
 */
@@ -331,7 +331,7 @@ func TestRemoveOneOfTwoMediatorsAndSubsequentNotify(t *testing.T) {
 	}
 }
 
-/**
+/*
   Tests registering the same mediator twice.
   A subsequent notification should only illicit
   one response. Also, since reregistration
@@ -372,7 +372,7 @@ func TestMediatorReregistration(t *testing.T) {
 	}
 }
 
-/**
+/*
 
   Tests the ability for the observer list to
   be modified during the process of notification,

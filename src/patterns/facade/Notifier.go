@@ -10,42 +10,44 @@ package facade
 
 import "github.com/puremvc/puremvc-go-standard-framework/src/interfaces"
 
-/**
-A Base `INotifier` implementation.
+/*
+A Base INotifier implementation.
 
-`MacroCommand, Command, Mediator` and `Proxy`
-all have a need to send `Notifications`.
+MacroCommand, Command, Mediator and Proxy
+all have a need to send Notifications.
 
-The `INotifier` interface provides a common method called
-`sendNotification` that relieves implementation code of
-the necessity to actually construct `Notifications`.
+The INotifier interface provides a common method called
+sendNotification that relieves implementation code of
+the necessity to actually construct Notifications.
 
-The `Notifier` class, which all of the above mentioned classes
-extend, provides an initialized reference to the `Facade`
+The Notifier class, which all of the above mentioned classes
+extend, provides an initialized reference to the Facade
 Singleton, which is required for the convienience method
-for sending `Notifications`, but also eases implementation as these
-classes have frequent `Facade` interactions and usually require
+for sending Notifications, but also eases implementation as these
+classes have frequent Facade interactions and usually require
 access to the facade anyway.
 */
 type Notifier struct {
 	Facade interfaces.IFacade
 }
 
-/**
-  Create and send an `INotification`.
+/*
+  Create and send an INotification.
 
   Keeps us from having to construct new INotification
   instances in our implementation code.
 
   - parameter notificationName: the name of the notification to send
+
   - parameter body: the body of the notification (optional)
-  - parameter type: the _type of the notification (optional)
+
+  - parameter type: the _type of the notification
 */
 func (self *Notifier) SendNotification(notificationName string, body interface{}, _type string) {
 	self.Facade.SendNotification(notificationName, body, _type)
 }
 
-/**
+/*
   Initialize this INotifier instance.
 
   This is how a Notifier get to Calls to
