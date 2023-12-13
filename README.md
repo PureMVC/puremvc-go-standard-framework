@@ -7,7 +7,7 @@ PureMVC is a lightweight framework for creating applications based upon the clas
 
 ## Installation
 ```
-require github.com/puremvc/puremvc-go-standard-framework v1.0.0
+require github.com/puremvc/puremvc-go-standard-framework v1.1.0
 ```
 
 ## Platforms / Technologies
@@ -18,7 +18,7 @@ require github.com/puremvc/puremvc-go-standard-framework v1.0.0
 * [Windows](https://en.wikipedia.org/wiki/Microsoft_Windows)
 
 ## Status
-Production - [Version 1.0](https://github.com/PureMVC/puremvc-go-standard-framework/blob/master/VERSION)
+Production - [Version 1.1](https://github.com/PureMVC/puremvc-go-standard-framework/blob/master/VERSION)
 
 ## License
 * PureMVC Standard Framework for Go - Copyright © 2019 [Saad Shams](https://www.linkedin.com/in/muizz/)
