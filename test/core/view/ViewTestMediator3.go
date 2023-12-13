@@ -16,13 +16,13 @@ import (
 const ViewTestMediator3_NAME = "viewTestMediator3"
 
 /*
-A Mediator class used by ViewTest.
+ViewTestMediator3 A Mediator class used by ViewTest.
 */
 type ViewTestMediator3 struct {
 	mediator.Mediator
 }
 
-// be sure that the mediator has some Observers created
+// ListNotificationInterests be sure that the mediator has some Observers created
 // in order to test removeMediator
 func (mediator *ViewTestMediator3) ListNotificationInterests() []string {
 	return []string{VIEWTEST_NOTE3}

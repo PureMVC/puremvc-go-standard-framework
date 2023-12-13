@@ -52,11 +52,11 @@ func TestMacroCommandExecute(t *testing.T) {
 	var note = observer.NewNotification("MacroCommandTest", &vo, "")
 
 	// Create the SimpleCommand
-	var command = MacroCommandTestCommand{MacroCommand: command.MacroCommand{}}
-	command.Notifier.InitializeNotifier()
+	var c = MacroCommandTestCommand{MacroCommand: command.MacroCommand{}}
+	c.Notifier.InitializeNotifier()
 
 	// Execute the SimpleCommand
-	command.Execute(note)
+	c.Execute(note)
 
 	// test assertions
 	if vo.Result1 != 10 {
@@ -68,17 +68,17 @@ func TestMacroCommandExecute(t *testing.T) {
 }
 
 /*
-  Testing MacroCommand via Controller and notify via View
+Testing MacroCommand via Controller and notify via View
 */
 func TestMacroCommandExecuteViaControllerView(t *testing.T) {
-	var controller = controller.GetInstance(func() interfaces.IController { return &controller.Controller{} })
-	var view = view.GetInstance(func() interfaces.IView { return &view.View{}})
+	var c = controller.GetInstance(func() interfaces.IController { return &controller.Controller{} })
+	var v = view.GetInstance(func() interfaces.IView { return &view.View{} })
 
-	controller.RegisterCommand("MacroCommandTestViaControllerView", func() interfaces.ICommand { return &MacroCommandTestCommand{} })
+	c.RegisterCommand("MacroCommandTestViaControllerView", func() interfaces.ICommand { return &MacroCommandTestCommand{} })
 
 	var vo = MacroCommandTestVO{Input: 5}
 	var note = observer.NewNotification("MacroCommandTestViaControllerView", &vo, "")
-	view.NotifyObservers(note)
+	v.NotifyObservers(note)
 
 	if vo.Result1 != 10 {
 		t.Error("Expecting vo.Result1 == 10")

@@ -14,7 +14,7 @@ import (
 )
 
 /*
-A Singleton IModel implementation.
+Model A Singleton IModel implementation.
 
 In PureMVC, the Model class provides
 access to model objects (Proxies) by named lookup.
@@ -40,39 +40,39 @@ var instance interfaces.IModel // The Singleton Model instance.
 var instanceMutex sync.RWMutex // instanceMutex for thread safety
 
 /*
-  Model Singleton Factory method.
+GetInstance Model Singleton Factory method.
 
-  - parameter modelFunc: reference that returns IModel
+- parameter factory: reference that returns IModel
 
-  - returns: the instance returned by the passed modelFunc
+- returns: the instance returned by the passed modelFunc
 */
-func GetInstance(modelFunc func() interfaces.IModel) interfaces.IModel {
+func GetInstance(factory func() interfaces.IModel) interfaces.IModel {
 	instanceMutex.Lock()
 	defer instanceMutex.Unlock()
 
 	if instance == nil {
-		instance = modelFunc()
+		instance = factory()
 		instance.InitializeModel()
 	}
 	return instance
 }
 
 /*
-  Initialize the Model instance.
+InitializeModel Initialize the Model instance.
 
-  Called automatically by the GetInstance, this
-  is your opportunity to initialize the Singleton
-  instance in your subclass without overriding the
-  constructor.
+Called automatically by the GetInstance, this
+is your opportunity to initialize the Singleton
+instance in your subclass without overriding the
+constructor.
 */
 func (self *Model) InitializeModel() {
 	self.proxyMap = map[string]interfaces.IProxy{}
 }
 
 /*
-  Register an IProxy with the Model.
+RegisterProxy Register an IProxy with the Model.
 
-  - parameter proxy: an IProxy to be held by the Model.
+- parameter proxy: an IProxy to be held by the Model.
 */
 func (self *Model) RegisterProxy(proxy interfaces.IProxy) {
 	self.proxyMapMutex.Lock()
@@ -84,25 +84,25 @@ func (self *Model) RegisterProxy(proxy interfaces.IProxy) {
 }
 
 /*
-  Retrieve an IProxy from the Model.
+RetrieveProxy Retrieve an IProxy from the Model.
 
-  - parameter proxyName:
+- parameter proxyName:
 
-  - returns: the IProxy instance previously registered with the given proxyName.
+- returns: the IProxy instance previously registered with the given proxyName.
 */
 func (self *Model) RetrieveProxy(proxyName string) interfaces.IProxy {
-	self.proxyMapMutex.RLock();
+	self.proxyMapMutex.RLock()
 	defer self.proxyMapMutex.RUnlock()
 
 	return self.proxyMap[proxyName]
 }
 
 /*
-  Remove an IProxy from the Model.
+RemoveProxy Remove an IProxy from the Model.
 
-  - parameter proxyName: name of the IProxy instance to be removed.
+- parameter proxyName: name of the IProxy instance to be removed.
 
-  - returns: the IProxy that was removed from the Model
+- returns: the IProxy that was removed from the Model
 */
 func (self *Model) RemoveProxy(proxyName string) interfaces.IProxy {
 	self.proxyMapMutex.Lock()
@@ -117,11 +117,11 @@ func (self *Model) RemoveProxy(proxyName string) interfaces.IProxy {
 }
 
 /*
-  Check if a Proxy is registered
+HasProxy Check if a Proxy is registered
 
-  - parameter proxyName:
+- parameter proxyName:
 
-  - returns: whether a Proxy is currently registered with the given proxyName.
+- returns: whether a Proxy is currently registered with the given proxyName.
 */
 func (self *Model) HasProxy(proxyName string) bool {
 	self.proxyMapMutex.RLock()

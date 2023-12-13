@@ -9,7 +9,7 @@
 package interfaces
 
 /*
-The interface definition for a PureMVC Mediator.
+IMediator The interface definition for a PureMVC Mediator.
 
 In PureMVC, IMediator implementors assume these responsibilities:
 
@@ -43,17 +43,17 @@ type IMediator interface {
 
 	/*
 	  Get the IMediator instance name
-	 */
+	*/
 	GetMediatorName() string
 
 	/*
 	  Get the IMediator's view component.
-	 */
+	*/
 	GetViewComponent() interface{}
 
 	/*
 	  Set the IMediator's view component.
-	 */
+	*/
 	SetViewComponent(viewComponent interface{})
 
 	/*
